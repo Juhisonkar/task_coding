@@ -1,0 +1,81 @@
+#QUESTION 1
+class Solution{
+   
+    static ArrayList<Integer> leader(int arr[], int n){
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(arr[n - 1]);
+        
+        for(int i = n - 2; i >= 0; i--) {
+            if(arr[i] > res.get(res.size() - 1))
+                res.add(arr[i]);
+        }
+        
+        Collections.reverse(res);
+        
+        return res;
+    }
+}
+
+#QUESTION 2
+package profit;
+
+import java.util.Scanner;
+
+public class MaxProfit {
+	public static int maxProfit(int[] prices) {
+        int minimum = Integer.MAX_VALUE;
+        int gain = 0;
+        for(int curr : prices){
+            if(curr < minimum){
+                minimum = curr;
+            }
+            else if(curr-minimum > gain){
+                gain = curr - minimum;
+            }
+        }
+        return gain;
+    }
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] arr = new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		int result = maxProfit(arr);
+		System.out.println(result);
+
+	}
+}
+
+
+
+#QUSETION 3
+package subsetSum;
+import java.util.*;
+
+
+public class Subset {
+	
+	  public static int find(int nums[],int i,int xor){
+	        if(i==nums.length){
+	            return xor;
+	        }
+	        return find(nums,i+1,xor^nums[i])+find(nums,i+1,xor);
+	    }
+    
+  
+	public static void main(String[] args) {
+		 Scanner sc = new Scanner(System.in);
+		 int n = sc.nextInt();
+		 int arr[] = new int[n];
+		 for(int i=0;i<n;i++) {
+			 arr[i]= sc.nextInt();
+		 }
+		 int result =find(arr,0,0);
+		System.out.println(result);
+	}
+
+}
+
+
