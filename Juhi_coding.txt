@@ -1,0 +1,49 @@
+#QUESTION 1
+class Solution{
+   
+    static ArrayList<Integer> leader(int arr[], int n){
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(arr[n - 1]);
+        
+        for(int i = n - 2; i >= 0; i--) {
+            if(arr[i] > res.get(res.size() - 1))
+                res.add(arr[i]);
+        }
+        
+        Collections.reverse(res);
+        
+        return res;
+    }
+}
+
+#QUESTION 2
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minimum = Integer.MAX_VALUE;
+        int gain = 0;
+        for(int curr : prices){
+            if(curr < minimum){
+                minimum = curr;
+            }
+            else if(curr-minimum > gain){
+                gain = curr - minimum;
+            }
+        }
+        return gain;
+    }
+}
+
+#QUSETION 3
+class Solution {
+    public int find(int nums[],int i,int xor){
+        if(i==nums.length){
+            return xor;
+        }
+        return find(nums,i+1,xor^nums[i])+find(nums,i+1,xor);
+    }
+    public int subsetXORSum(int[] nums) {
+       return find(nums,0,0);
+        
+    }
+}
+
